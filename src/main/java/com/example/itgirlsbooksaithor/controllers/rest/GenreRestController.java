@@ -1,4 +1,4 @@
-package com.example.itgirlsbooksaithor.controllers;
+package com.example.itgirlsbooksaithor.controllers.rest;
 
 import com.example.itgirlsbooksaithor.models.dto.GenreDto;
 import com.example.itgirlsbooksaithor.services.interfaces.GenreService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-public class GenreController {
+public class GenreRestController {
 
     private final GenreService genreService;
 

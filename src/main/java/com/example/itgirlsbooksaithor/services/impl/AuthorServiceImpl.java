@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -52,6 +53,12 @@ public class AuthorServiceImpl implements AuthorService {
         authorRepository.deleteById(id);
     }
 
+    @Override
+    public List<AuthorDto> getAllAuthors() {
+        List<Author> authors = authorRepository.findAll();
+        return authors.stream().map(this::convertEntityToDto).collect(Collectors.toList());
+    }
+
     private AuthorDto convertEntityToDto(Author author) {
         List<BookDto> bookDtoList = null;
         if (author.getBooks() != null) {
@@ -64,7 +71,7 @@ public class AuthorServiceImpl implements AuthorService {
                     ).toList();
         }
             return AuthorDto.builder()
-                    .books(bookDtoList)
+//                    .books(bookDtoList)
                     .id(author.getId())
                     .name(author.getName())
                     .surname(author.getSurname())

@@ -7,6 +7,9 @@ import com.example.itgirlsbooksaithor.services.interfaces.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Service
 public class BookServiceImpl implements BookService {
@@ -22,6 +25,12 @@ public class BookServiceImpl implements BookService {
     public BookDto getByNameV2(String name) {
         Book book = bookRepository.findBookByNameBySql(name).orElseThrow();
         return convertEntityToDto(book);
+    }
+
+    @Override
+    public List<BookDto> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+        return books.stream().map(this::convertEntityToDto).collect(Collectors.toList());
     }
 
     private BookDto convertEntityToDto(Book book) {
