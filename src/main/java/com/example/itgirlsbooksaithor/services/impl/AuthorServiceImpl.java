@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -21,8 +22,13 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorDto getAuthorById(Long id) {
-        Author author = authorRepository.findById(id).orElseThrow();
-        return convertEntityToDto(author);
+        Optional <Author> author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            AuthorDto authorDto = convertEntityToDto(author.get());
+            return authorDto;
+        } else {
+            throw new IllegalStateException("Автор не найден");
+        }
     }
 
     @Override
