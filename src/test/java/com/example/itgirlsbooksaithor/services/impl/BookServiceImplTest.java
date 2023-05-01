@@ -1,32 +1,48 @@
 package com.example.itgirlsbooksaithor.services.impl;
 
+import com.example.itgirlsbooksaithor.models.Book;
+import com.example.itgirlsbooksaithor.models.Genre;
+import com.example.itgirlsbooksaithor.models.dto.BookCreateDto;
+import com.example.itgirlsbooksaithor.models.dto.BookDto;
 import com.example.itgirlsbooksaithor.repositories.BookRepository;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.itgirlsbooksaithor.repositories.GenreRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class BookServiceImplTest {
 
-    @Mock
+    @Autowired
     private BookRepository bookRepository;
 
-    @InjectMocks
+    @Autowired
+    private GenreRepository genreRepository;
+
+    @Autowired
     private BookServiceImpl bookService;
 
     @Test
-    void getByNameV1() {
-    }
+    void createBook() {
+        BookCreateDto bookCreateDto = new BookCreateDto();
+        bookCreateDto.setName("test");
+        bookCreateDto.setGenreId(2L);
 
-    @Test
-    void getByNameV2() {
-    }
+        BookDto bookDto = bookService.createBook(bookCreateDto);
 
-    @Test
-    void getAllBooks() {
+        assertNotNull(bookDto.getId()); // проверяем, что книга была сохранена
+
+        // получаем книгу из БД
+        Book book = bookRepository.findById(bookDto.getId()).orElseThrow(() -> new RuntimeException("Книга не найдена"));
+
+        // проверяем, что книга была сохранена с правильными данными
+        assertEquals(bookCreateDto.getGenreId(), book.getGenre().getId());
     }
 }
