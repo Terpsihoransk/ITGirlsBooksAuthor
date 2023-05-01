@@ -12,10 +12,10 @@
     <artifactId>ITGirlsBooksAithor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>ITGirlsBooksAithor</name>
-    <description>ITGirlsBooksAithor</description>
+    <name>ITGirlsBooksAuthor</name>
+    <description>ITGirlsBooksAuthor</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>20</java.version>
     </properties>
     <dependencies>
         <dependency>

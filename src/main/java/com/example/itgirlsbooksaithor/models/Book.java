@@ -1,9 +1,6 @@
 package com.example.itgirlsbooksaithor.models;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Collection;
 
@@ -11,6 +8,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @Entity
 public class Book {
 
