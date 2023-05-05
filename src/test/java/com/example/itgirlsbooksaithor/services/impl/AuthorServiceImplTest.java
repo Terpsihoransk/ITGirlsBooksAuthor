@@ -40,9 +40,9 @@ class AuthorServiceImplTest {
         AuthorDto authorDto = authorService.getAuthorById(id); // вызываем метод, который тестируем
         verify(authorRepository).findById(id); // проверяем как отрабатывает метод
 
-        Assertions.assertEquals(authorDto.getId(), author.getId()); // проверим равны ли объекты
-        Assertions.assertEquals(authorDto.getName(), author.getName());
-        Assertions.assertEquals(authorDto.getSurname(), author.getSurname());
+        Assertions.assertEquals(author.getId(), authorDto.getId());
+        Assertions.assertEquals(author.getName(), authorDto.getName());
+        Assertions.assertEquals(author.getSurname(), authorDto.getSurname());
     }
 
     @Test

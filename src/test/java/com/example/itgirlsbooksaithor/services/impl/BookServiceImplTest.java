@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class BookServiceImplTest {
 
-    @Autowired
+    @Autowired  // починить, надо мокать
     private BookRepository bookRepository;
 
     @Autowired
