@@ -8,7 +8,6 @@ import com.example.itgirlsbooksaithor.models.dto.BookUpdateDto;
 import com.example.itgirlsbooksaithor.repositories.BookRepository;
 import com.example.itgirlsbooksaithor.repositories.GenreRepository;
 import com.example.itgirlsbooksaithor.services.interfaces.BookService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
