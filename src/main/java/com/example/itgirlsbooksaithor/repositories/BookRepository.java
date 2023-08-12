@@ -2,7 +2,9 @@ package com.example.itgirlsbooksaithor.repositories;
 
 import com.example.itgirlsbooksaithor.models.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -14,4 +16,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(nativeQuery = true, value = "SELECT * from book where name = ?")
     Optional<Book> findBookByNameBySql(String name);
+
 }

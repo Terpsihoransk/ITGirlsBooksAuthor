@@ -11,7 +11,9 @@ import com.example.itgirlsbooksaithor.services.interfaces.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -59,9 +61,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDto createBook(BookCreateDto bookCreateDto) {
         Genre genre = genreRepository.findById(bookCreateDto.getGenreId()).orElseThrow(() -> new RuntimeException("Жанр не найден")); // получили жанр из БД
-        Book book = convertDtoToEntity(bookCreateDto);
+        Book book = new Book();
+        book.setName(bookCreateDto.getName());
         book.setGenre(genre);
-        book = bookRepository.save(book);
+        bookRepository.save(book);
         BookDto bookDto = convertEntityToDto(book);
         return bookDto;
     }
