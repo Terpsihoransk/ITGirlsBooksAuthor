@@ -16,5 +16,4 @@ public class Genre {
 
     @Column(nullable = false)
     private String name;
-
 }
