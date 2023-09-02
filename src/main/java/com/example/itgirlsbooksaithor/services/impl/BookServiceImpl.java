@@ -24,11 +24,6 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final GenreRepository genreRepository;
 
-    public Optional<Long> getGenreId() {
-        Long genreId = null;
-        return Optional.ofNullable(genreId);
-    }
-
     @Override
     public BookDto getBookById(Long id) {
         Optional<Book> book = bookRepository.findById(id);
