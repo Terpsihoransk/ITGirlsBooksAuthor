@@ -7,11 +7,18 @@ import com.example.itgirlsbooksaithor.services.interfaces.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 public class BookRestController {
 
     private final BookService bookService;
+
+    @GetMapping("/allBooks")
+    List<BookDto> getAllBooks() {
+        return bookService.getAllBooks();
+    }
 
     @GetMapping("/book/{id}")
     BookDto getBookById(@PathVariable("id") Long id) {

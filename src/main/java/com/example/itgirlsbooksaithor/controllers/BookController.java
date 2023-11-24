@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-//@Controller
+@Controller
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
